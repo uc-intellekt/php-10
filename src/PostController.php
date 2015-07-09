@@ -9,7 +9,7 @@ class PostController
 
         $posts = $conn->fetchAll("SELECT * FROM posts");
 
-        print_r($posts);
+//        print_r($posts);
 
         return 'My blog';
     }
@@ -23,8 +23,10 @@ class PostController
             'id' => (int) $id,
         ));
 
-        print_r($post);
+//        print_r($post);
 
-        return 'Post ' . $id;
+        return $app['twig']->render('post/show.twig', array(
+            'post' => $post,
+        ));
     }
 }
